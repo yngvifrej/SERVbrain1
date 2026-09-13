@@ -1,0 +1,2261 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>0</title>
+<meta content="Independent creative studio." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --paper: #ffffff;
+      --ink: #000000;
+      --muted: #707070;
+      --baseline: 8px;
+      --margin: clamp(20px, 3.25vw, 56px);
+      --gutter: clamp(12px, 1.35vw, 24px);
+      --max-width: 1800px;
+      --font: Helvetica, "Helvetica Neue", Arial, sans-serif;
+
+      /* Swiss typographic scale */
+      --type-micro: 12px;
+      --type-body: 20px;
+      --type-brand: clamp(30px, 2.3vw, 42px);
+      --type-nav: clamp(19px, 1.45vw, 24px);
+      --type-kicker: 17px;
+      --type-lead: clamp(38px, 3.1vw, 54px);
+      --type-cap: clamp(26px, 2.1vw, 34px);
+      --type-project: clamp(42px, 3.7vw, 58px);
+      --type-section: clamp(58px, 5vw, 86px);
+      --type-display: clamp(108px, 10vw, 168px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--paper); }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: var(--type-body);
+      line-height: 1.46;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .site { min-height: 100vh; background: #fff; }
+    .shell {
+      width: min(100%, var(--max-width));
+      margin-inline: auto;
+      padding-inline: var(--margin);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--gutter);
+    }
+
+    .site-header {
+      position: relative;
+      background: #fff;
+      color: #000;
+      padding-top: 32px;
+    }
+    .header-inner { align-items: start; }
+    .brand {
+      grid-column: 1 / span 2;
+      font-size: var(--type-brand);
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+    .nav {
+      grid-column: 8 / span 5;
+      display: flex;
+      justify-content: flex-end;
+      gap: clamp(18px, 2vw, 34px);
+      font-size: var(--type-nav);
+      line-height: 1.2;
+    }
+    .nav a { opacity: .72; transition: opacity 140ms ease; }
+    .nav a:hover { opacity: 1; }
+
+
+    .hero {
+      min-height: 86svh;
+      padding-top: clamp(90px, 12vh, 160px);
+      padding-bottom: clamp(70px, 9vh, 120px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hero-label {
+      grid-column: 1 / span 4;
+      font-size: var(--type-kicker);
+      line-height: 1.333;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      color: var(--muted);
+    }
+    h1 {
+      grid-column: 1 / span 12;
+      margin: clamp(48px, 7vh, 88px) 0 0;
+      font-size: clamp(112px, 10vw, 174px);
+      line-height: .92;
+      font-weight: 700;
+      letter-spacing: -.04em;
+      text-transform: uppercase;
+    }
+    .hero-bottom { align-items: end; }
+    .hero-copy {
+      grid-column: 1 / span 6;
+      margin: 0;
+      max-width: 22ch;
+      font-size: var(--type-lead);
+      line-height: 1.2;
+      letter-spacing: -.018em;
+    }
+    .hero-data {
+      grid-column: 10 / span 3;
+      font-size: var(--type-kicker);
+      line-height: 1.333;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      color: var(--muted);
+    }
+
+    .section {
+      padding-top: clamp(100px, 13vh, 180px);
+      padding-bottom: clamp(100px, 13vh, 180px);
+    }
+    .section-head { margin-bottom: clamp(72px, 9vh, 120px); }
+    .section-index {
+      grid-column: 1 / span 2;
+      font-size: clamp(18px, 1.35vw, 24px);
+      line-height: 1.2;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .015em;
+      color: var(--ink);
+    }
+    .section-title {
+      grid-column: 4 / span 8;
+      margin: 0;
+      font-size: var(--type-section);
+      line-height: 1.0;
+      font-weight: 400;
+      letter-spacing: -.035em;
+      max-width: 16ch;
+    }
+
+
+
+    .carousel-block {
+      margin-bottom: clamp(88px, 11vh, 152px);
+    }
+    .carousel-meta {
+      grid-column: 1 / span 2;
+      align-self: end;
+      font-size: var(--type-micro);
+      line-height: 1.333;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      color: var(--muted);
+    }
+    .carousel-shell {
+      grid-column: 2 / span 10;
+      min-width: 0;
+    }
+    .carousel-stage {
+      position: relative;
+      height: clamp(360px, 48vw, 680px);
+      perspective: 1800px;
+      perspective-origin: 50% 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: none;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .carousel-stage.is-dragging { cursor: grabbing; }
+    .carousel-stage.is-dragging .carousel-slide,
+    .carousel-stage.is-auto-animating .carousel-slide { transition: none; }
+    .carousel-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+    .carousel-slide {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(64%, 760px);
+      aspect-ratio: 4 / 3;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      overflow: visible;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+      transform-origin: center center;
+      transition: transform 520ms cubic-bezier(.22,.75,.18,1), opacity 420ms ease;
+      will-change: transform, opacity;
+      cursor: grab;
+    }
+    .carousel-stage.is-dragging .carousel-slide { cursor: grabbing; }
+    .carousel-symbol {
+      display: block;
+      width: auto;
+      height: min(72%, 360px);
+      max-width: 76%;
+      object-fit: contain;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      backface-visibility: hidden;
+      opacity: 1;
+      mix-blend-mode: multiply;
+      transform: none;
+    }
+    .carousel-slide:focus-visible { outline: 1px solid #000; outline-offset: 4px; }
+    .carousel-ui {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(10, minmax(0, 1fr));
+      column-gap: var(--gutter);
+      align-items: start;
+    }
+    .carousel-caption {
+      grid-column: 1 / span 6;
+      margin: 0;
+      font-size: var(--type-micro);
+      line-height: 1.333;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      color: var(--muted);
+    }
+    .carousel-count {
+      grid-column: 7 / span 1;
+      font-size: var(--type-micro);
+      line-height: 1.333;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+    }
+    .carousel-controls {
+      grid-column: 9 / span 2;
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+    }
+    .carousel-control {
+      appearance: none;
+      border: 0;
+      background: #fff;
+      color: var(--ink);
+      padding: 0;
+      font: inherit;
+      font-size: var(--type-micro);
+      line-height: 1.333;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      cursor: pointer;
+    }
+    .carousel-control:hover { opacity: .55; }
+
+    .projects { display: grid; row-gap: clamp(80px, 11vh, 150px); }
+    .project { align-items: start; }
+    .project-no {
+      grid-column: 1 / span 1;
+      font-size: var(--type-micro);
+      line-height: 1.333;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .project-title {
+      grid-column: 3 / span 5;
+      margin: 0;
+      font-size: var(--type-project);
+      line-height: 1.0;
+      font-weight: 700;
+      letter-spacing: -.03em;
+    }
+    .project-copy {
+      grid-column: 9 / span 4;
+      margin: 0;
+      max-width: 38ch;
+      font-size: var(--type-body);
+      line-height: 1.46;
+    }
+    .project-meta {
+      grid-column: 9 / span 4;
+      margin-top: 24px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: var(--type-micro);
+      line-height: 1.333;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      color: var(--muted);
+    }
+
+    .capabilities {
+      grid-column: 4 / span 8;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--gutter);
+      row-gap: 32px;
+    }
+    .cap {
+      font-size: var(--type-cap);
+      line-height: 1.15;
+      letter-spacing: -.02em;
+    }
+    .cap small {
+      display: block;
+      margin-bottom: 8px;
+      font-size: var(--type-micro);
+      line-height: 1.333;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .statement {
+      padding-top: clamp(110px, 14vh, 190px);
+      padding-bottom: clamp(110px, 14vh, 190px);
+    }
+    .statement .lead {
+      grid-column: 1 / span 11;
+      margin: 0;
+      max-width: 14ch;
+      font-size: clamp(72px, 6.8vw, 112px);
+      line-height: .94;
+      font-weight: 400;
+      letter-spacing: -.04em;
+    }
+    .statement .lead strong { font-weight: 700; }
+    .statement-note {
+      grid-column: 10 / span 3;
+      margin-top: 64px;
+      font-size: var(--type-micro);
+      line-height: 1.333;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      color: var(--muted);
+    }
+
+    .hero-top {
+      margin-bottom: clamp(44px, 6vh, 88px);
+    }
+    .hero-zero-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: clamp(28px, 4vh, 56px);
+      padding-bottom: clamp(28px, 4vh, 56px);
+    }
+    .zero-pyramid {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      row-gap: clamp(2px, .4vw, 10px);
+      user-select: none;
+      pointer-events: none;
+    }
+    .zero-row {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(8px, .9vw, 18px);
+      line-height: .78;
+      white-space: nowrap;
+    }
+    .zero-row span {
+      display: inline-block;
+      font-family: var(--font);
+      font-weight: 700;
+      color: #000;
+      font-size: clamp(126px, 11.5vw, 220px);
+      letter-spacing: -.085em;
+      transform-origin: center center;
+    }
+    .zero-row.two span { font-size: clamp(116px, 10.5vw, 198px); }
+    .zero-row.one span { font-size: clamp(108px, 9.5vw, 180px); }
+    .hero-zero-carousel {
+      width: min(100%, 920px);
+      margin-inline: auto;
+    }
+    .hero-zero-carousel .carousel-stage {
+      height: clamp(280px, 34vw, 470px);
+      perspective: 1800px;
+      overflow: visible;
+    }
+    .hero-zero-carousel .carousel-track {
+      width: 100%;
+      height: 100%;
+    }
+    .hero-zero-carousel .carousel-slide {
+      width: min(42%, 380px);
+      aspect-ratio: 1 / 1;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      overflow: visible;
+    }
+    .zero-cell {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+    .zero-glyph {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(0px, .16vw, 3px);
+      font-family: var(--font);
+      font-weight: 700;
+      line-height: .76;
+      letter-spacing: -.1em;
+      color: #000;
+      pointer-events: none;
+    }
+    .zero-glyph .zero-row {
+      gap: clamp(8px, .9vw, 18px);
+      align-items: center;
+    }
+    .zero-glyph .zero-row span {
+      font-size: clamp(82px, 8vw, 148px);
+      font-family: var(--font);
+      font-weight: 700;
+      letter-spacing: -.12em;
+    }
+    .zero-glyph.variant-2 {
+      gap: 0px;
+    }
+    .zero-glyph.variant-2 .zero-row {
+      gap: clamp(10px, 1vw, 20px);
+    }
+    .zero-glyph.variant-3 {
+      transform: scale(1.06);
+    }
+    .zero-glyph.variant-3 .zero-row.two {
+      transform: translateY(-2px);
+    }
+    .zero-glyph.variant-4 {
+      gap: clamp(1px, .24vw, 5px);
+    }
+    .zero-glyph.variant-4 .zero-row {
+      gap: clamp(11px, 1.05vw, 22px);
+    }
+    .hero-zero-carousel .carousel-ui {
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+
+    .abracadabra {
+      padding-top: clamp(72px, 9vh, 120px);
+      padding-bottom: clamp(72px, 9vh, 120px);
+      background: #fff;
+      overflow: hidden;
+    }
+    .abracadabra-field {
+      grid-column: 1 / span 12;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      font-family: var(--font);
+      font-size: clamp(34px, 5vw, 96px); /* JS fits the first row exactly */
+      line-height: 1.16;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hebrew-field {
+      font-family: "Frank Ruhl Libre", "Times New Roman", serif;
+      direction: ltr;
+      unicode-bidi: bidi-override;
+      font-weight: 700;
+      line-height: .90;
+      letter-spacing: .035em;
+      font-optical-sizing: auto;
+      text-rendering: geometricPrecision;
+    }
+
+    .abracadabra-field span {
+      display: block;
+      width: max-content;
+      max-width: none;
+      text-align: center;
+    }
+
+    .footer {
+      background: #fff;
+      color: #000;
+      padding-top: clamp(110px, 14vh, 190px);
+      padding-bottom: 40px;
+    }
+    .footer-title {
+      grid-column: 1 / span 8;
+      margin: 0;
+      font-size: clamp(112px, 10vw, 174px);
+      line-height: .92;
+      font-weight: 700;
+      letter-spacing: -.04em;
+      text-transform: uppercase;
+    }
+    .footer-contact {
+      grid-column: 10 / span 3;
+      align-self: end;
+      font-size: var(--type-body);
+      line-height: 1.46;
+    }
+    .footer-contact p { margin: 0 0 16px; }
+    .footer-contact a { font-weight: 700; }
+    .footer-bottom {
+      margin-top: clamp(80px, 10vh, 140px);
+      font-size: var(--type-micro);
+      line-height: 1.333;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      color: var(--muted);
+    }
+    .footer-bottom .left { grid-column: 1 / span 4; }
+    .footer-bottom .center { grid-column: 5 / span 4; }
+    .footer-bottom .right { grid-column: 10 / span 3; text-align: right; }
+
+
+    .grid-toggle {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      opacity: .72;
+      transition: opacity 140ms ease;
+    }
+    .grid-toggle:hover,
+    .grid-toggle[aria-pressed="true"] { opacity: 1; }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 160ms ease;
+      z-index: 999;
+    }
+    body.show-grid .grid-overlay { opacity: 1; }
+    .grid-overlay-shell {
+      width: min(100%, var(--max-width));
+      height: 100%;
+      margin-inline: auto;
+      padding-inline: var(--margin);
+    }
+    .grid-overlay-cols {
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--gutter);
+    }
+    .grid-overlay-cols span {
+      display: block;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.05);
+      border-left: 1px solid rgba(0, 0, 0, 0.12);
+      border-right: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    @media (max-width: 980px) {
+      :root { --margin: 24px; --gutter: 16px; }
+      .grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+      .brand { grid-column: 1; }
+      .nav { grid-column: 3 / span 4; }
+      h1 { grid-column: 1 / span 6; }
+      .hero-copy { grid-column: 1 / span 4; font-size: clamp(30px, 8vw, 40px); }
+      .hero-data { grid-column: 5 / span 2; }
+      .section-index { grid-column: 1; font-size: 16px; }
+      .section-title { grid-column: 2 / span 5; }
+      .carousel-meta { grid-column: 1; }
+      .carousel-shell { grid-column: 2 / span 4; }
+      .carousel-stage { height: clamp(340px, 62vw, 560px); }
+      .carousel-slide { width: min(70%, 620px); }
+      .carousel-symbol { width: auto; height: min(68%, 280px); max-width: 72%; }
+      .project-no { grid-column: 1; }
+      .project-title { grid-column: 2 / span 3; }
+      .project-copy, .project-meta { grid-column: 5 / span 2; }
+      .capabilities { grid-column: 2 / span 5; }
+      .statement .lead { grid-column: 1 / span 6; }
+      .statement-note { grid-column: 5 / span 2; }
+      .abracadabra-field { grid-column: 1 / span 6; letter-spacing: .20em; }
+      .footer-title { grid-column: 1 / span 4; }
+      .footer-contact { grid-column: 5 / span 2; }
+      .footer-bottom .left { grid-column: 1 / span 2; }
+      .footer-bottom .center { grid-column: 3 / span 2; }
+      .footer-bottom .right { grid-column: 5 / span 2; }
+      .grid-overlay-cols { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 700px) {
+      :root { --margin: 16px; --gutter: 12px; }
+      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .site-header { padding-top: 20px; }
+      .brand { grid-column: 1; }
+      .nav { grid-column: 2 / span 3; gap: 12px; font-size: 18px; }
+      .nav a:nth-child(2) { display: none; }
+      .hero { min-height: 84svh; padding-top: 70px; padding-bottom: 52px; }
+      .hero-label { grid-column: 1 / span 3; }
+      h1 { grid-column: 1 / span 4; font-size: clamp(72px, 18vw, 104px); }
+      .hero-copy { grid-column: 1 / span 4; font-size: clamp(30px, 8vw, 40px); }
+      .hero-data { grid-column: 1 / span 3; margin-top: 36px; }
+      .section { padding-top: 90px; padding-bottom: 90px; }
+      .section-head { margin-bottom: 64px; }
+      .section-index { grid-column: 1; font-size: 16px; }
+      .section-title { grid-column: 2 / span 3; font-size: clamp(58px, 14vw, 86px); }
+      .projects { row-gap: 76px; }
+      .carousel-block { row-gap: 24px; }
+      .carousel-meta { grid-column: 1 / span 4; }
+      .carousel-shell { grid-column: 1 / span 4; }
+      .carousel-stage { height: clamp(300px, 95vw, 470px); overflow: visible; }
+      .carousel-slide { width: 72%; }
+      .carousel-symbol { width: auto; height: min(66%, 220px); max-width: 72%; }
+      .carousel-ui { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .carousel-caption { grid-column: 1 / span 2; }
+      .carousel-count { grid-column: 3; }
+      .carousel-controls { grid-column: 4; gap: 12px; }
+      .project-no { grid-column: 1; }
+      .project-title { grid-column: 2 / span 3; }
+      .project-copy { grid-column: 2 / span 3; margin-top: 24px; }
+      .project-meta { grid-column: 2 / span 3; margin-top: 16px; }
+      .capabilities { grid-column: 2 / span 3; grid-template-columns: 1fr; row-gap: 34px; }
+      .statement { padding-top: 96px; padding-bottom: 96px; }
+      .statement .lead { grid-column: 1 / span 4; font-size: clamp(52px, 11vw, 76px); }
+      .statement-note { grid-column: 2 / span 3; margin-top: 48px; }
+      .abracadabra { padding-top: 64px; padding-bottom: 64px; }
+      .abracadabra-field { grid-column: 1 / span 4; line-height: 1.18; letter-spacing: .14em; }
+      .footer { padding-top: 96px; }
+      .footer-title { grid-column: 1 / span 4; }
+      .footer-contact { grid-column: 2 / span 3; margin-top: 60px; }
+      .footer-bottom { row-gap: 8px; }
+      .footer-bottom .left { grid-column: 1 / span 2; }
+      .footer-bottom .center { grid-column: 3 / span 2; text-align: right; }
+      .footer-bottom .right { grid-column: 1 / span 4; text-align: left; }
+      .grid-overlay-cols { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+
+
+    /* 2026 responsive refinement — fluid, mobile-first behavior on top of the Swiss grid */
+    html { overflow-x: clip; }
+    body { overflow-x: clip; }
+    img, svg { max-width: 100%; }
+    section, footer { scroll-margin-top: 24px; }
+
+    .shell,
+    .grid-overlay-shell {
+      padding-left: max(var(--margin), env(safe-area-inset-left));
+      padding-right: max(var(--margin), env(safe-area-inset-right));
+    }
+
+    .nav a,
+    .grid-toggle,
+    .carousel-control {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav a:focus-visible,
+    .grid-toggle:focus-visible,
+    .carousel-control:focus-visible,
+    .brand:focus-visible,
+    .carousel-stage:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 4px;
+    }
+
+    .hero-copy,
+    .project-copy,
+    .footer-contact {
+      text-wrap: pretty;
+    }
+
+    h1,
+    .section-title,
+    .project-title,
+    .statement .lead,
+    .footer-title {
+      text-wrap: balance;
+    }
+
+    .carousel-stage {
+      overscroll-behavior-x: contain;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Large editorial screens: prevent excessive line length while allowing the grid to breathe. */
+    @media (min-width: 1440px) {
+      :root {
+        --margin: clamp(48px, 3.25vw, 64px);
+        --gutter: clamp(20px, 1.35vw, 28px);
+      }
+      .site-header { padding-top: 36px; }
+      .hero { min-height: min(900px, 88svh); }
+      h1, .footer-title { font-size: clamp(148px, 9.4vw, 178px); }
+      .hero-copy { max-width: 20ch; }
+      .section-title { max-width: 14ch; }
+      .carousel-stage { height: clamp(560px, 39vw, 700px); }
+    }
+
+    /* Laptop / compact desktop. */
+    @media (min-width: 981px) and (max-width: 1279px) {
+      :root {
+        --margin: clamp(28px, 3vw, 40px);
+        --gutter: clamp(14px, 1.3vw, 18px);
+        --type-nav: clamp(17px, 1.55vw, 20px);
+        --type-body: 19px;
+      }
+      .nav { grid-column: 7 / span 6; gap: clamp(16px, 1.7vw, 24px); }
+      h1 { font-size: clamp(92px, 10vw, 128px); }
+      .hero { min-height: 82svh; padding-top: clamp(74px, 9vh, 112px); }
+      .hero-copy { grid-column: 1 / span 7; font-size: clamp(32px, 3.2vw, 42px); }
+      .hero-data { grid-column: 10 / span 3; }
+      .section-title { grid-column: 4 / span 9; font-size: clamp(52px, 5.4vw, 68px); }
+      .carousel-stage { height: clamp(410px, 47vw, 580px); }
+      .project-title { grid-column: 3 / span 6; font-size: clamp(38px, 4vw, 50px); }
+      .project-copy, .project-meta { grid-column: 9 / span 4; }
+      .statement .lead { font-size: clamp(66px, 7vw, 92px); }
+      .footer-title { font-size: clamp(94px, 10vw, 128px); }
+    }
+
+    /* Tablet refinement. */
+    @media (min-width: 701px) and (max-width: 980px) {
+      :root {
+        --margin: clamp(24px, 3.5vw, 34px);
+        --gutter: clamp(14px, 2vw, 18px);
+        --type-body: 18px;
+        --type-nav: clamp(16px, 2.1vw, 19px);
+        --type-kicker: 14px;
+      }
+      .site-header { padding-top: 24px; }
+      .brand { grid-column: 1 / span 2; }
+      .nav { grid-column: 3 / span 4; gap: clamp(12px, 2vw, 22px); }
+      .hero { min-height: 78svh; padding-top: clamp(72px, 10vh, 108px); }
+      h1 { font-size: clamp(76px, 12.4vw, 116px); }
+      .hero-copy { grid-column: 1 / span 4; max-width: 20ch; font-size: clamp(28px, 4.2vw, 38px); }
+      .hero-data { grid-column: 5 / span 2; font-size: 13px; }
+      .section { padding-top: clamp(88px, 10vh, 120px); padding-bottom: clamp(88px, 10vh, 120px); }
+      .section-title { font-size: clamp(48px, 7.4vw, 68px); max-width: 13ch; }
+      .carousel-stage { height: clamp(350px, 58vw, 520px); }
+      .carousel-symbol { width: auto; height: min(68%, 270px); max-width: 72%; }
+      .project-title { grid-column: 2 / span 4; font-size: clamp(36px, 5.2vw, 48px); }
+      .project-copy { grid-column: 2 / span 4; margin-top: 24px; max-width: 42ch; }
+      .project-meta { grid-column: 2 / span 4; margin-top: 14px; }
+      .capabilities { grid-column: 2 / span 5; }
+      .statement .lead { font-size: clamp(58px, 8.5vw, 82px); }
+      .footer-title { grid-column: 1 / span 4; font-size: clamp(76px, 11vw, 108px); }
+      .footer-contact { grid-column: 5 / span 2; font-size: 18px; }
+    }
+
+    /* Phone: retain the editorial scale while changing composition, not merely shrinking it. */
+    @media (max-width: 700px) {
+      :root {
+        --margin: clamp(16px, 4.5vw, 22px);
+        --gutter: clamp(10px, 3vw, 14px);
+        --type-body: 18px;
+        --type-micro: 11px;
+        --type-kicker: 13px;
+      }
+      body { font-size: 18px; line-height: 1.42; }
+      .site-header { padding-top: max(16px, env(safe-area-inset-top)); }
+      .header-inner { row-gap: 12px; }
+      .brand {
+        grid-column: 1 / span 4;
+        font-size: clamp(28px, 8vw, 36px);
+        line-height: 1;
+      }
+      .nav {
+        grid-column: 1 / span 4;
+        width: 100%;
+        justify-content: space-between;
+        gap: 0;
+        font-size: clamp(15px, 4.2vw, 17px);
+        line-height: 1;
+      }
+      .nav a:nth-child(2) { display: inline-flex; }
+      .nav a, .grid-toggle { padding-inline: 0; }
+
+      .hero {
+        min-height: max(680px, 84svh);
+        padding-top: clamp(58px, 10vh, 90px);
+        padding-bottom: clamp(48px, 8vh, 70px);
+      }
+      .hero-label { grid-column: 1 / span 4; }
+      h1 {
+        margin-top: clamp(38px, 6vh, 58px);
+        font-size: clamp(56px, 18vw, 104px);
+        line-height: .9;
+        letter-spacing: -.045em;
+      }
+      .hero-bottom { row-gap: 34px; }
+      .hero-copy {
+        grid-column: 1 / span 4;
+        max-width: 19ch;
+        font-size: clamp(27px, 7.5vw, 36px);
+        line-height: 1.12;
+      }
+      .hero-data { grid-column: 1 / span 4; margin-top: 0; font-size: 12px; }
+
+      .section { padding-top: clamp(80px, 11vh, 108px); padding-bottom: clamp(80px, 11vh, 108px); }
+      .section-head { row-gap: 28px; margin-bottom: clamp(52px, 9vh, 74px); }
+      .section-index { grid-column: 1 / span 4; font-size: 14px; }
+      .section-title {
+        grid-column: 1 / span 4;
+        font-size: clamp(44px, 12.6vw, 70px);
+        line-height: .98;
+        max-width: 12ch;
+      }
+
+      .carousel-block { margin-bottom: clamp(72px, 12vh, 110px); }
+      .carousel-meta { font-size: 11px; }
+      .carousel-stage {
+        height: clamp(300px, 94vw, 440px);
+        overflow: hidden;
+        margin-inline: calc(-1 * var(--margin));
+        width: calc(100% + 2 * var(--margin));
+      }
+      .carousel-slide { width: min(76%, 370px); }
+      .carousel-symbol { width: min(67%, 210px); }
+      .carousel-ui { margin-top: 14px; row-gap: 12px; }
+      .carousel-caption { grid-column: 1 / span 2; max-width: 22ch; }
+      .carousel-count { grid-column: 3; }
+      .carousel-controls { grid-column: 4; gap: 8px; }
+      .carousel-control { min-width: 44px; justify-content: flex-end; }
+
+      .projects { row-gap: clamp(68px, 11vh, 94px); }
+      .project { row-gap: 18px; }
+      .project-no { grid-column: 1 / span 4; }
+      .project-title {
+        grid-column: 1 / span 4;
+        font-size: clamp(38px, 10.5vw, 58px);
+        line-height: .98;
+      }
+      .project-copy { grid-column: 1 / span 4; margin-top: 2px; max-width: 34ch; font-size: 18px; }
+      .project-meta { grid-column: 1 / span 4; margin-top: 0; font-size: 11px; }
+
+      .capabilities { grid-column: 1 / span 4; grid-template-columns: 1fr; row-gap: 30px; }
+      .cap { font-size: clamp(25px, 7vw, 34px); }
+
+      .statement { padding-top: clamp(84px, 12vh, 116px); padding-bottom: clamp(84px, 12vh, 116px); }
+      .statement .lead {
+        grid-column: 1 / span 4;
+        max-width: 12ch;
+        font-size: clamp(45px, 12.5vw, 70px);
+        line-height: .96;
+      }
+      .statement-note { grid-column: 1 / span 4; margin-top: 38px; max-width: 34ch; }
+
+      .footer { padding-top: clamp(88px, 12vh, 120px); padding-bottom: max(28px, env(safe-area-inset-bottom)); }
+      .footer-title {
+        grid-column: 1 / span 4;
+        font-size: clamp(58px, 18vw, 102px);
+        line-height: .9;
+      }
+      .footer-contact { grid-column: 1 / span 4; margin-top: 48px; max-width: 28ch; font-size: 18px; }
+      .footer-bottom { margin-top: 72px; row-gap: 10px; }
+      .footer-bottom .left { grid-column: 1 / span 4; }
+      .footer-bottom .center { display: none; }
+      .footer-bottom .right { grid-column: 1 / span 4; text-align: left; }
+
+      .abracadabra { padding-top: 56px; padding-bottom: 56px; }
+      .abracadabra-field { letter-spacing: .11em; }
+    }
+
+    /* Very narrow phones. */
+    @media (max-width: 390px) {
+      :root { --margin: 14px; --gutter: 10px; }
+      .nav { font-size: 15px; }
+      .nav a, .grid-toggle { min-height: 40px; }
+      .hero { min-height: max(620px, 82svh); }
+      h1 { font-size: clamp(52px, 17.7vw, 70px); }
+      .hero-copy { font-size: clamp(25px, 7.2vw, 30px); }
+      .section-title { font-size: clamp(40px, 12vw, 50px); }
+      .project-title { font-size: clamp(36px, 10vw, 44px); }
+      .statement .lead { font-size: clamp(41px, 11.8vw, 50px); }
+      .footer-title { font-size: clamp(54px, 17vw, 68px); }
+      .carousel-stage { height: clamp(280px, 92vw, 350px); }
+      .carousel-symbol { width: min(64%, 180px); }
+    }
+
+    /* Short landscape phones/tablets: avoid forcing an oversized hero viewport. */
+    @media (max-height: 560px) and (orientation: landscape) {
+      .hero { min-height: auto; padding-top: 56px; padding-bottom: 64px; }
+      h1 { margin-top: 38px; font-size: clamp(68px, 12vw, 108px); }
+      .hero-bottom { margin-top: 72px; }
+      .section, .statement { padding-top: 80px; padding-bottom: 80px; }
+      .carousel-stage { height: min(70vh, 430px); }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .nav a:hover, .grid-toggle:hover, .carousel-control:hover { opacity: .55; }
+      .brand:hover { opacity: .72; }
+    }
+
+
+
+    /* === Swiss modular system pass: 8px vertical rhythm + codified column anchors === */
+    :root {
+      --s1: 8px;
+      --s2: 16px;
+      --s3: 24px;
+      --s4: 32px;
+      --s5: 40px;
+      --s6: 48px;
+      --s7: 56px;
+      --s8: 64px;
+      --s9: 72px;
+      --s10: 80px;
+      --s12: 96px;
+      --s14: 112px;
+      --s16: 128px;
+      --s18: 144px;
+    }
+
+    /* The visible grid toggle now reveals both columns and the 8px baseline. */
+    .grid-overlay-shell {
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, .055) 0,
+        rgba(0, 0, 0, .055) 1px,
+        transparent 1px,
+        transparent var(--baseline)
+      );
+      background-clip: content-box;
+    }
+
+    /* Approved 12-column anchors. These make repeated modules resolve to the same grid lines. */
+    @media (min-width: 981px) {
+      .section-index { grid-column: 1 / span 2; }
+      .section-title { grid-column: 4 / span 9; }
+      .carousel-meta { grid-column: 1 / span 2; }
+      .carousel-shell { grid-column: 2 / span 10; }
+      .project-no { grid-column: 1 / span 1; }
+      .project-title { grid-column: 3 / span 5; }
+      .project-copy, .project-meta { grid-column: 9 / span 4; }
+      .capabilities { grid-column: 4 / span 8; }
+      .statement .lead { grid-column: 1 / span 11; }
+      .statement-note { grid-column: 10 / span 3; }
+      .footer-title { grid-column: 1 / span 8; }
+      .footer-contact { grid-column: 10 / span 3; }
+    }
+
+    /* Large desktop rhythm: every major vertical interval is an 8px multiple. */
+    @media (min-width: 1280px) {
+      .site-header { padding-top: var(--s4); }
+      .hero { padding-top: var(--s16); padding-bottom: var(--s12); }
+      h1 { margin-top: var(--s8); }
+      .section { padding-top: var(--s16); padding-bottom: var(--s16); }
+      .section-head { margin-bottom: var(--s12); }
+      .carousel-block { margin-bottom: var(--s16); }
+      .carousel-ui { margin-top: var(--s3); }
+      .projects { row-gap: var(--s14); }
+      .project-meta { margin-top: var(--s3); gap: var(--s2); }
+      .capabilities { row-gap: var(--s4); }
+      .statement { padding-top: var(--s18); padding-bottom: var(--s18); }
+      .statement-note { margin-top: var(--s8); }
+      .abracadabra { padding-top: var(--s12); padding-bottom: var(--s12); }
+      .footer { padding-top: var(--s18); padding-bottom: var(--s5); }
+      .footer-contact p { margin-bottom: var(--s2); }
+      .footer-bottom { margin-top: var(--s14); }
+    }
+
+    /* Laptop rhythm. */
+    @media (min-width: 981px) and (max-width: 1279px) {
+      .site-header { padding-top: var(--s4); }
+      .hero { padding-top: var(--s12); padding-bottom: var(--s10); }
+      h1 { margin-top: var(--s7); }
+      .section { padding-top: var(--s14); padding-bottom: var(--s14); }
+      .section-head { margin-bottom: var(--s10); }
+      .carousel-block { margin-bottom: var(--s12); }
+      .carousel-ui { margin-top: var(--s3); }
+      .projects { row-gap: var(--s12); }
+      .project-meta { margin-top: var(--s3); gap: var(--s2); }
+      .capabilities { row-gap: var(--s4); }
+      .statement { padding-top: 120px; padding-bottom: 120px; }
+      .statement-note { margin-top: var(--s8); }
+      .abracadabra { padding-top: var(--s10); padding-bottom: var(--s10); }
+      .footer { padding-top: 120px; padding-bottom: var(--s4); }
+      .footer-bottom { margin-top: var(--s12); }
+    }
+
+    /* Six-column tablet system. */
+    @media (min-width: 701px) and (max-width: 980px) {
+      .site-header { padding-top: var(--s3); }
+      .section-index { grid-column: 1 / span 1; }
+      .section-title { grid-column: 2 / span 5; }
+      .carousel-meta { grid-column: 1 / span 1; }
+      .carousel-shell { grid-column: 2 / span 4; }
+      .hero { padding-top: var(--s14); padding-bottom: var(--s9); }
+      h1 { margin-top: var(--s6); }
+      .section { padding-top: var(--s12); padding-bottom: var(--s12); }
+      .section-head { margin-bottom: var(--s9); }
+      .carousel-block { margin-bottom: var(--s10); }
+      .carousel-ui { margin-top: var(--s3); }
+      .projects { row-gap: var(--s10); }
+      .project-copy { margin-top: var(--s3); }
+      .project-meta { margin-top: var(--s2); gap: var(--s2); }
+      .capabilities { row-gap: var(--s4); }
+      .statement { padding-top: 104px; padding-bottom: 104px; }
+      .statement-note { margin-top: var(--s6); }
+      .abracadabra { padding-top: var(--s9); padding-bottom: var(--s9); }
+      .footer { padding-top: 104px; padding-bottom: var(--s4); }
+      .footer-contact { margin-top: var(--s6); }
+      .footer-bottom { margin-top: var(--s10); }
+    }
+
+    /* Four-column phone system. Keep the editorial scale, but quantize the vertical rhythm. */
+    @media (max-width: 700px) {
+      .header-inner { row-gap: var(--s2); }
+      .hero { padding-top: var(--s9); padding-bottom: var(--s7); }
+      h1 { margin-top: var(--s6); }
+      .hero-bottom { row-gap: var(--s4); }
+      .section { padding-top: var(--s14); padding-bottom: var(--s14); }
+      .section-head { row-gap: var(--s3); margin-bottom: var(--s8); }
+      .carousel-block { margin-bottom: var(--s10); }
+      .carousel-ui { margin-top: var(--s2); row-gap: var(--s2); }
+      .carousel-controls { gap: var(--s1); }
+      .projects { row-gap: var(--s9); }
+      .project { row-gap: var(--s2); }
+      .project-copy { margin-top: 0; }
+      .project-meta { margin-top: 0; gap: var(--s2); }
+      .capabilities { row-gap: var(--s4); }
+      .statement { padding-top: var(--s12); padding-bottom: var(--s12); }
+      .statement-note { margin-top: var(--s5); }
+      .abracadabra { padding-top: var(--s7); padding-bottom: var(--s7); }
+      .footer { padding-top: var(--s12); padding-bottom: max(var(--s4), env(safe-area-inset-bottom)); }
+      .footer-contact { margin-top: var(--s6); }
+      .footer-bottom { margin-top: var(--s9); row-gap: var(--s2); }
+    }
+
+    @media (max-height: 560px) and (orientation: landscape) {
+      .hero { padding-top: var(--s7); padding-bottom: var(--s8); }
+      h1 { margin-top: var(--s5); }
+      .hero-bottom { margin-top: var(--s9); }
+      .section, .statement { padding-top: var(--s10); padding-bottom: var(--s10); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; animation: none !important; }
+    }
+  
+
+    /* Preserve exact vector geometry; normalize visible height without cropping SVG viewBoxes. */
+    .carousel-slide[data-variant="1"] { --symbol-scale: 1; }
+    .carousel-slide[data-variant="2"] { --symbol-scale: 1.174; }
+    .carousel-slide[data-variant="3"] { --symbol-scale: 1.134; }
+    .carousel-slide[data-variant="4"] { --symbol-scale: 1.109; }
+    .carousel-slide[data-variant="5"] { --symbol-scale: 1; }
+    .carousel-symbol {
+      width: auto !important;
+      height: min(72%, 360px) !important;
+      max-width: none !important;
+      transform: scale(var(--symbol-scale, 1)) !important;
+      transform-origin: 50% 50%;
+    }
+    @media (max-width: 980px) {
+      .carousel-symbol { height: min(68%, 280px) !important; }
+    }
+    @media (max-width: 700px) {
+      .carousel-symbol { height: min(62%, 210px) !important; }
+    }
+    @media (max-width: 390px) {
+      .carousel-symbol { height: min(60%, 180px) !important; }
+    }
+
+
+.carousel-slide { overflow: visible; }
+.carousel-symbol { display:block; overflow:visible; }
+
+    @media (max-width: 980px) {
+      .hero-zero-wrap { padding-top: 20px; padding-bottom: 20px; }
+      .hero-zero-carousel { width: min(100%, 760px); }
+      .hero-zero-carousel .carousel-stage { height: clamp(240px, 44vw, 380px); }
+      .hero-zero-carousel .carousel-slide { width: min(48%, 290px); }
+      .zero-glyph .zero-row span { font-size: clamp(62px, 9vw, 112px); }
+      .zero-glyph { gap: 0px; }
+      .zero-glyph .zero-row { gap: 10px; }
+    }
+    @media (max-width: 700px) {
+      .hero-zero-wrap { padding-top: 12px; padding-bottom: 12px; }
+      .hero-zero-carousel { width: 100%; }
+      .hero-zero-carousel .carousel-stage { height: clamp(210px, 58vw, 300px); }
+      .hero-zero-carousel .carousel-slide { width: min(54%, 220px); }
+      .zero-glyph .zero-row span { font-size: clamp(42px, 11vw, 78px); }
+      .zero-glyph { gap: 0px; }
+      .zero-glyph .zero-row { gap: 7px; }
+      .hero-zero-carousel .carousel-ui { margin-top: 14px; }
+    }
+
+
+
+/* standalone zero-carousel page */
+.site-header {
+  padding-top: 18px;
+  padding-bottom: 10px;
+}
+.site-header .shell {
+  padding-left: clamp(12px, 1.2vw, 22px);
+  padding-right: var(--margin);
+}
+.header-inner {
+  align-items: end;
+}
+.brand {
+  grid-column: 1 / span 1;
+  justify-self: start;
+  font-family: var(--font-stack, "Helvetica Neue", Helvetica, Arial, sans-serif);
+}
+.zero-only-hero {
+  min-height: calc(100svh - 92px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: clamp(24px, 4vh, 48px);
+}
+.zero-only-hero .hero-zero-wrap {
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.hero-zero-carousel {
+  width: min(100%, 1260px);
+  margin-inline: auto;
+}
+.hero-zero-carousel .carousel-stage {
+  height: clamp(420px, 52vw, 700px);
+}
+.hero-zero-carousel .carousel-slide {
+  width: min(62%, 610px);
+}
+.hero-zero-carousel .carousel-ui {
+  margin-top: 20px;
+}
+@media (max-width: 980px) {
+  .zero-only-hero {
+    min-height: calc(100svh - 86px);
+  }
+  .hero-zero-carousel {
+    width: min(100%, 1120px);
+  }
+  .hero-zero-carousel .carousel-stage {
+    height: clamp(390px, 70vw, 650px);
+  }
+  .hero-zero-carousel .carousel-slide {
+    width: min(72%, 540px);
+  }
+  .zero-glyph .zero-row span {
+    font-size: clamp(70px, 10.8vw, 128px);
+  }
+}
+@media (max-width: 700px) {
+  .site-header {
+    padding-top: 16px;
+    padding-bottom: 8px;
+  }
+  .site-header .shell {
+    padding-left: 10px;
+    padding-right: 14px;
+  }
+  .brand {
+    font-size: clamp(34px, 9vw, 48px);
+  }
+  .zero-only-hero {
+    min-height: calc(100svh - 82px);
+    padding-bottom: 18px;
+  }
+  .hero-zero-carousel {
+    width: 100%;
+  }
+  .hero-zero-carousel .carousel-stage {
+    height: clamp(430px, 108vw, 620px);
+  }
+  .hero-zero-carousel .carousel-slide {
+    width: min(94%, 430px);
+  }
+  .zero-glyph .zero-row span {
+    font-size: clamp(66px, 16.5vw, 122px);
+  }
+  .zero-glyph .zero-row {
+    gap: 11px;
+  }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .zero-only-hero {
+    min-height: auto;
+    padding-bottom: 14px;
+  }
+  .hero-zero-carousel .carousel-stage {
+    height: clamp(320px, 78svh, 460px);
+  }
+  .hero-zero-carousel .carousel-slide {
+    width: min(64%, 370px);
+  }
+  .zero-glyph .zero-row span {
+    font-size: clamp(50px, 10vh, 86px);
+  }
+}
+@media (min-width: 701px) and (orientation: portrait) {
+  .hero-zero-carousel .carousel-stage {
+    height: clamp(480px, 64vw, 780px);
+  }
+}
+
+.hero-zero-carousel .carousel-stage { margin-bottom: 0; }
+.hero-zero-carousel .carousel-track {
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+
+/* tighter inter-cell spacing: cells sit closer to neighboring pyramids */
+.hero-zero-carousel .carousel-stage {
+  overflow: visible;
+}
+.hero-zero-carousel .carousel-track {
+  transform-style: preserve-3d;
+}
+
+
+
+/* stronger scale for tablets and phones */
+@media (min-width: 701px) and (max-width: 1180px) {
+  .hero-zero-carousel {
+    width: min(100%, 1120px);
+  }
+  .hero-zero-carousel .carousel-stage {
+    height: clamp(430px, 66vw, 690px);
+  }
+  .hero-zero-carousel .carousel-slide {
+    width: min(74%, 560px);
+  }
+  .zero-glyph .zero-row span {
+    font-size: clamp(72px, 10.5vw, 132px);
+  }
+}
+
+@media (max-width: 540px) {
+  .zero-only-hero {
+    align-items: center;
+  }
+  .hero-zero-carousel .carousel-stage {
+    height: clamp(440px, 116vw, 650px);
+  }
+  .hero-zero-carousel .carousel-slide {
+    width: min(98%, 440px);
+  }
+  .zero-glyph .zero-row span {
+    font-size: clamp(68px, 18vw, 126px);
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-zero-carousel .carousel-stage {
+    height: clamp(410px, 122vw, 610px);
+  }
+  .hero-zero-carousel .carousel-slide {
+    width: min(100%, 420px);
+  }
+  .zero-glyph .zero-row span {
+    font-size: clamp(62px, 18.5vw, 116px);
+  }
+}
+
+
+
+/* XL responsive pass — larger on every screen and orientation-aware */
+.site { overflow-x: clip; }
+.hero-zero-carousel {
+  width: min(100%, 1440px);
+}
+.hero-zero-carousel .carousel-stage {
+  height: clamp(480px, 56vw, 820px);
+}
+.hero-zero-carousel .carousel-slide {
+  width: min(68%, 720px);
+}
+.zero-glyph .zero-row span {
+  font-size: clamp(88px, 9.2vw, 164px);
+}
+
+/* iPad / tablets in portrait */
+@media (min-width: 701px) and (max-width: 1180px) and (orientation: portrait) {
+  .zero-only-hero {
+    min-height: calc(100svh - 82px);
+  }
+  .hero-zero-carousel {
+    width: 100%;
+  }
+  .hero-zero-carousel .carousel-stage {
+    height: min(76svh, 860px);
+    min-height: 560px;
+  }
+  .hero-zero-carousel .carousel-slide {
+    width: min(88%, 700px);
+  }
+  .zero-glyph .zero-row span {
+    font-size: clamp(92px, 13vw, 166px);
+  }
+}
+
+/* iPad / tablets in landscape */
+@media (min-width: 701px) and (max-width: 1366px) and (orientation: landscape) {
+  .zero-only-hero {
+    min-height: calc(100svh - 70px);
+    padding-bottom: 8px;
+  }
+  .hero-zero-carousel {
+    width: min(100%, 1240px);
+  }
+  .hero-zero-carousel .carousel-stage {
+    height: min(82svh, 700px);
+    min-height: 400px;
+  }
+  .hero-zero-carousel .carousel-slide {
+    width: min(68%, 620px);
+  }
+  .zero-glyph .zero-row span {
+    font-size: clamp(72px, 12vh, 130px);
+  }
+}
+
+/* Phones in portrait — deliberately oversized */
+@media (max-width: 700px) and (orientation: portrait) {
+  .zero-only-hero {
+    min-height: calc(100svh - 72px);
+    padding-bottom: 8px;
+  }
+  .hero-zero-carousel {
+    width: 100%;
+  }
+  .hero-zero-carousel .carousel-stage {
+    height: min(78svh, 700px);
+    min-height: 470px;
+    width: calc(100% + 20px);
+    margin-left: -10px;
+  }
+  .hero-zero-carousel .carousel-slide {
+    width: min(112%, 500px);
+  }
+  .zero-glyph .zero-row span {
+    font-size: clamp(76px, 20vw, 142px);
+  }
+  .zero-glyph .zero-row {
+    gap: clamp(10px, 2.5vw, 18px);
+  }
+}
+
+/* Phones in landscape — scale from height rather than width */
+@media (max-width: 900px) and (orientation: landscape) {
+  .zero-only-hero {
+    min-height: calc(100svh - 58px);
+    padding-bottom: 0;
+  }
+  .hero-zero-carousel {
+    width: 100%;
+  }
+  .hero-zero-carousel .carousel-stage {
+    height: min(88svh, 520px);
+    min-height: 300px;
+  }
+  .hero-zero-carousel .carousel-slide {
+    width: min(72%, 430px);
+  }
+  .zero-glyph .zero-row span {
+    font-size: clamp(58px, 13vh, 104px);
+  }
+}
+
+/* Very small phones */
+@media (max-width: 390px) and (orientation: portrait) {
+  .hero-zero-carousel .carousel-stage {
+    height: min(80svh, 620px);
+    min-height: 450px;
+  }
+  .hero-zero-carousel .carousel-slide {
+    width: min(118%, 470px);
+  }
+  .zero-glyph .zero-row span {
+    font-size: clamp(72px, 21vw, 126px);
+  }
+}
+
+
+/* === Brain viewer patch: deliberately preserves the original Swiss grid/type scale === */
+.brain-carousel .carousel-stage {
+  overflow: visible;
+  cursor: grab;
+  background: transparent;
+}
+.brain-carousel .carousel-stage:active { cursor: grabbing; }
+
+#brainCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: transparent;
+  touch-action: none;
+}
+
+.brain-loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--type-micro);
+  line-height: 1.333;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  color: var(--muted);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.brain-corner-legend {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  width: 104px;
+  height: 92px;
+  pointer-events: none;
+  font-size: var(--type-micro);
+  line-height: 1;
+  color: var(--muted);
+}
+.legend-triangle {
+  position: absolute;
+  left: 25px;
+  top: 19px;
+  width: 56px;
+  height: 50px;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  background: conic-gradient(from 0deg, #2455ff, #ff6659, #eed74d, #56d67b, #2455ff);
+  opacity: .92;
+}
+.legend-video { position:absolute; left:36px; top:0; }
+.legend-audio { position:absolute; left:0; bottom:4px; }
+.legend-text  { position:absolute; right:0; bottom:4px; }
+
+.brain-ui { margin-top: 20px; }
+.brain-ui .carousel-caption { grid-column: 1 / span 6; }
+.brain-ui .carousel-count { grid-column: 7 / span 1; }
+.brain-ui .carousel-controls { grid-column: 9 / span 2; }
+
+@media (max-width: 700px) {
+  .brain-corner-legend {
+    width: 92px;
+    height: 82px;
+    top: 0;
+    right: 8px;
+  }
+  .legend-triangle {
+    width: 48px;
+    height: 43px;
+    left: 22px;
+  }
+  .brain-ui {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .brain-ui .carousel-caption { grid-column: 1 / span 2; }
+  .brain-ui .carousel-count { grid-column: 3; }
+  .brain-ui .carousel-controls { grid-column: 4; gap: 8px; }
+}
+
+</style>
+</head>
+<body id="top">
+<div class="site">
+<header class="site-header">
+<div class="shell">
+<div class="grid header-inner">
+<a aria-label="0 home" class="brand" href="#top">0</a>
+</div>
+</div>
+</header>
+<main id="top">
+<section class="hero shell zero-only-hero">
+<div class="hero-zero-wrap">
+<div aria-label="Interactive normative brain" class="hero-zero-carousel carousel-block brain-carousel">
+<div aria-label="Interactive anatomical brain" class="carousel-stage brain-stage" tabindex="0">
+<canvas id="brainCanvas" aria-label="Rotatable 3D anatomical brain"></canvas>
+
+<div class="brain-corner-legend" aria-hidden="true">
+  <span class="legend-video">VIDEO</span>
+  <span class="legend-audio">AUDIO</span>
+  <span class="legend-text">TEXT</span>
+  <span class="legend-triangle"></span>
+</div>
+
+<div class="brain-loading" id="brainLoading">LOADING ANATOMICAL BRAIN</div>
+</div>
+
+<div class="carousel-ui brain-ui">
+<p class="carousel-caption">ANATOMICAL CORTEX · ILLUSTRATIVE VIDEO / AUDIO / TEXT MAP</p>
+<div class="carousel-count" id="brainState">3D</div>
+<div class="carousel-controls">
+<button class="carousel-control" id="brainSpin" type="button">PAUSE</button>
+<button class="carousel-control" id="brainReset" type="button">RESET</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<script>
+    (function () {
+      const field = document.querySelector('.abracadabra-field');
+      if (!field) return;
+      const firstRow = field.querySelector('span');
+      if (!firstRow) return;
+
+      function fitAbracadabra() {
+        // Measure at a neutral size, then scale the classic Hebrew lettering
+        // to occupy about 27% of the available Swiss grid width without wrapping.
+        field.style.fontSize = '100px';
+        const available = field.clientWidth;
+        const measured = firstRow.getBoundingClientRect().width;
+        if (!available || !measured) return;
+        field.style.fontSize = `${(27 * available / measured).toFixed(2)}px`;
+      }
+
+      fitAbracadabra();
+      window.addEventListener('resize', fitAbracadabra);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(fitAbracadabra);
+      }
+    }());
+  </script>
+<script>
+    (function () {
+      const carousels = document.querySelectorAll('.carousel-block');
+      if (!carousels.length) return;
+
+      carousels.forEach((carousel) => {
+        const stage = carousel.querySelector('.carousel-stage');
+        const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+        if (!stage || !slides.length) return;
+
+        const count = slides.length;
+        let active = 0;
+        let position = 0;
+        let dragging = false;
+        let suppressClick = false;
+        let startX = 0;
+        let startTime = 0;
+        let dragX = 0;
+        let dragStartPosition = 0;
+        let lastPointerX = 0;
+        let lastPointerTime = 0;
+        let inertiaVelocity = 0;
+        let resumeTimer = null;
+        let autoEnabled = true;
+        let raf = null;
+        let lastFrame = performance.now();
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const autoSpeed = 0.00019; // slides per ms
+        let zoomScale = 1.10;
+        let targetZoomScale = 1.10;
+        const minZoom = 0.50;
+        const maxZoom = 2.00;
+        let pinchStartDistance = 0;
+        let pinchStartZoom = 1;
+        let pinching = false;
+        const clampZoom = (v) => Math.max(minZoom, Math.min(maxZoom, v));
+        // One viewport-width drag = one complete 360-degree revolution.
+        const dragTravel = () => Math.max(stage.clientWidth / count, 80);
+
+        function wrap(value) {
+          return ((value % count) + count) % count;
+        }
+
+        function circularDiff(index, pos) {
+          let d = index - pos;
+          while (d > count / 2) d -= count;
+          while (d < -count / 2) d += count;
+          return d;
+        }
+
+        function render(pos = position) {
+          position = wrap(pos);
+          const stepDeg = 360 / count;
+          const stageWidth = stage.clientWidth || window.innerWidth;
+          const isZeroCarousel = carousel.classList.contains('hero-zero-carousel');
+          const xRadius = isZeroCarousel
+            ? Math.max(20, Math.min(32, stageWidth / 30))
+            : Math.max(36, Math.min(50, stageWidth / 18));
+          const zRadius = isZeroCarousel
+            ? Math.max(102, Math.min(152, stageWidth * 0.18))
+            : Math.max(145, Math.min(210, stageWidth * 0.28));
+          let nearest = 0;
+          let nearestAbs = Infinity;
+
+          slides.forEach((slide, i) => {
+            const d = circularDiff(i, position);
+            const abs = Math.abs(d);
+            if (abs < nearestAbs) {
+              nearestAbs = abs;
+              nearest = i;
+            }
+
+            const angle = d * stepDeg;
+            const rad = angle * Math.PI / 180;
+            const x = Math.sin(rad) * xRadius;
+            const z = Math.cos(rad) * zRadius - zRadius * 0.38;
+            const scale = isZeroCarousel
+              ? 0.82 + ((Math.cos(rad) + 1) / 2) * 0.18
+              : 0.68 + ((Math.cos(rad) + 1) / 2) * 0.32;
+            const opacity = isZeroCarousel
+              ? 0.42 + ((Math.cos(rad) + 1) / 2) * 0.58
+              : 0.16 + ((Math.cos(rad) + 1) / 2) * 0.84;
+            const rotateY = 0; // keep every symbol front-facing; no back-side flip
+            const zIndex = Math.round((Math.cos(rad) + 1) * 50 + 1);
+
+            slide.style.transform = `translate(-50%, -50%) translateX(${x}%) translateZ(${z}px) rotateY(${rotateY}deg) scale(${scale})`;
+            slide.style.opacity = opacity;
+            slide.style.zIndex = String(zIndex);
+            slide.setAttribute('aria-current', abs < 0.5 ? 'true' : 'false');
+            slide.tabIndex = abs < 0.5 ? 0 : -1;
+          });
+
+          active = nearest;
+          const track = carousel.querySelector('.carousel-track');
+          if (track) track.style.transform = `scale(${zoomScale})`;
+        }
+
+        function stopAutoTemporarily(delay = 7000) {
+          autoEnabled = false;
+          if (resumeTimer) clearTimeout(resumeTimer);
+          resumeTimer = setTimeout(() => { autoEnabled = true; }, delay);
+        }
+
+        function jump(step) {
+          position = wrap(Math.round(position) + step);
+          render(position);
+        }
+
+        slides.forEach((slide, i) => {
+          slide.addEventListener('click', () => {
+            if (suppressClick) return;
+            const d = circularDiff(i, position);
+            if (Math.abs(d) < 0.5) return;
+            stopAutoTemporarily();
+            jump(d < 0 ? -1 : 1);
+          });
+        });
+
+        stage.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            stopAutoTemporarily();
+            jump(-1);
+          }
+          if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            stopAutoTemporarily();
+            jump(1);
+          }
+        });
+
+        stage.addEventListener('pointerdown', (e) => {
+          if (pinching) return;
+          if (e.pointerType === 'mouse' && e.button !== 0) return;
+          dragging = true;
+          suppressClick = false;
+          startX = e.clientX;
+          startTime = performance.now();
+          dragX = 0;
+          dragStartPosition = position;
+          lastPointerX = e.clientX;
+          lastPointerTime = startTime;
+          inertiaVelocity = 0;
+          stopAutoTemporarily();
+          stage.classList.add('is-dragging');
+          try { stage.setPointerCapture(e.pointerId); } catch (_) {}
+        });
+
+        stage.addEventListener('pointermove', (e) => {
+          if (!dragging) return;
+          const now = performance.now();
+          dragX = e.clientX - startX;
+          if (Math.abs(dragX) > 2) suppressClick = true;
+
+          const deltaSlides = dragX / dragTravel();
+          render(dragStartPosition - deltaSlides);
+
+          const dt = Math.max(now - lastPointerTime, 1);
+          const pxVelocity = (e.clientX - lastPointerX) / dt;
+          // Convert pointer velocity to carousel rotations per millisecond.
+          inertiaVelocity = -pxVelocity / dragTravel();
+          lastPointerX = e.clientX;
+          lastPointerTime = now;
+        });
+
+        function finishDrag(e) {
+          if (!dragging) return;
+          dragging = false;
+          dragX = 0;
+          stage.classList.remove('is-dragging');
+          // Do not snap to a cell: preserve the exact 360-degree drag position.
+          if (Math.abs(inertiaVelocity) < 0.00008) inertiaVelocity = 0;
+          render(position);
+          try { stage.releasePointerCapture(e.pointerId); } catch (_) {}
+          setTimeout(() => { suppressClick = false; }, 80);
+        }
+
+        stage.addEventListener('pointerup', finishDrag);
+        stage.addEventListener('pointercancel', finishDrag);
+
+        function touchDistance(touches) {
+          const dx = touches[0].clientX - touches[1].clientX;
+          const dy = touches[0].clientY - touches[1].clientY;
+          return Math.hypot(dx, dy);
+        }
+
+        stage.addEventListener('touchstart', (e) => {
+          if (e.touches.length === 2) {
+            e.preventDefault();
+            pinching = true;
+            dragging = false;
+            stage.classList.remove('is-dragging');
+            pinchStartDistance = Math.max(1, touchDistance(e.touches));
+            pinchStartZoom = targetZoomScale;
+            inertiaVelocity = 0;
+            stopAutoTemporarily(2500);
+          }
+        }, { passive: false });
+
+        stage.addEventListener('touchmove', (e) => {
+          if (e.touches.length === 2) {
+            e.preventDefault();
+            if (!pinching) {
+              pinching = true;
+              pinchStartDistance = Math.max(1, touchDistance(e.touches));
+              pinchStartZoom = targetZoomScale;
+            }
+            const distance = Math.max(1, touchDistance(e.touches));
+            targetZoomScale = clampZoom(pinchStartZoom * (distance / pinchStartDistance));
+          }
+        }, { passive: false });
+
+        stage.addEventListener('touchend', (e) => {
+          if (e.touches.length < 2) pinching = false;
+        }, { passive: true });
+
+        stage.addEventListener('dblclick', () => {
+          targetZoomScale = 1;
+        });
+
+        stage.addEventListener('wheel', (e) => {
+          const horizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY) * 0.75 && !e.ctrlKey;
+          if (horizontal && Math.abs(e.deltaX) >= 0.5) {
+            e.preventDefault();
+            stopAutoTemporarily();
+            inertiaVelocity = 0;
+            position = wrap(position + (e.deltaX / dragTravel()) * 0.55);
+            render(position);
+            return;
+          }
+
+          if (Math.abs(e.deltaY) >= 0.5 || e.ctrlKey) {
+            e.preventDefault();
+            stopAutoTemporarily(2500);
+            const sensitivity = e.ctrlKey ? 0.006 : 0.0016;
+            const delta = e.ctrlKey ? e.deltaY : e.deltaY;
+            targetZoomScale = clampZoom(targetZoomScale * Math.exp(-delta * sensitivity));
+          }
+        }, { passive: false });
+
+        function tick(now) {
+          const dt = Math.min(now - lastFrame, 40);
+          lastFrame = now;
+
+          zoomScale += (targetZoomScale - zoomScale) * Math.min(1, 0.16 * (dt / 16.667));
+
+          if (!dragging && !document.hidden && count > 1) {
+            if (!reducedMotion.matches && Math.abs(inertiaVelocity) > 0.00002) {
+              position = wrap(position + inertiaVelocity * dt);
+              // Smooth friction: swipe momentum decays continuously, never snaps.
+              inertiaVelocity *= Math.pow(0.91, dt / 16.667);
+              render(position);
+            } else {
+              inertiaVelocity = 0;
+              if (autoEnabled && !reducedMotion.matches) {
+                position = wrap(position + dt * autoSpeed);
+                render(position);
+              } else if (Math.abs(targetZoomScale - zoomScale) > 0.0005) {
+                render(position);
+              }
+            }
+          } else if (Math.abs(targetZoomScale - zoomScale) > 0.0005) {
+            render(position);
+          }
+          raf = requestAnimationFrame(tick);
+        }
+
+        document.addEventListener('visibilitychange', () => {
+          lastFrame = performance.now();
+        });
+
+        function refreshLayout() {
+          lastFrame = performance.now();
+          requestAnimationFrame(() => render(position));
+          setTimeout(() => render(position), 120);
+        }
+
+        window.addEventListener('resize', refreshLayout);
+        window.addEventListener('orientationchange', refreshLayout);
+        if (window.visualViewport) {
+          window.visualViewport.addEventListener('resize', refreshLayout);
+        }
+
+        render(0);
+        raf = requestAnimationFrame(tick);
+      });    }());
+  </script>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
+
+const canvas = document.getElementById("brainCanvas");
+const stage = canvas.closest(".brain-stage");
+const loading = document.getElementById("brainLoading");
+const state = document.getElementById("brainState");
+const resetButton = document.getElementById("brainReset");
+const spinButton = document.getElementById("brainSpin");
+
+const renderer = new THREE.WebGLRenderer({
+  canvas,
+  antialias: true,
+  alpha: true,
+  powerPreference: "high-performance"
+});
+renderer.setClearColor(0xffffff, 0);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(36, 1, 0.01, 100);
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0xd7d7d7, 2.2));
+const key = new THREE.DirectionalLight(0xffffff, 3.0);
+key.position.set(4, 6, 7);
+scene.add(key);
+const fill = new THREE.DirectionalLight(0xdce7ff, 1.0);
+fill.position.set(-5, 1, 3);
+scene.add(fill);
+
+const root = new THREE.Group();
+root.rotation.y = -0.25;
+scene.add(root);
+
+const model = new THREE.Group();
+root.add(model);
+
+function extras(o) {
+  if (o.userData && o.userData.bx_cat != null) return o.userData;
+  if (o.parent && o.parent.userData && o.parent.userData.bx_cat != null) return o.parent.userData;
+  return o.userData || {};
+}
+
+function cortexMaterial() {
+  return new THREE.MeshStandardMaterial({
+    color: 0xffffff,
+    vertexColors: true,
+    roughness: 0.76,
+    metalness: 0.0,
+    emissive: new THREE.Color(0x0b0b0b),
+    emissiveIntensity: 0.018,
+    side: THREE.FrontSide
+  });
+}
+
+// Triangle corner colors.
+// VIDEO = blue, AUDIO = green/cyan, TEXT = warm coral.
+// These are illustrative modality weights, not measured neural activity.
+const MODAL_COLORS = {
+  video: new THREE.Color("#3157ff"),
+  audio: new THREE.Color("#58d97d"),
+  text:  new THREE.Color("#ff8066"),
+  neutral: new THREE.Color("#e9e9e6")
+};
+
+function gaussian(value, center, sigma) {
+  const d = (value - center) / sigma;
+  return Math.exp(-0.5 * d * d);
+}
+
+function clamp01(v) {
+  return Math.max(0, Math.min(1, v));
+}
+
+function sigmoid(x) {
+  return 1 / (1 + Math.exp(-x));
+}
+
+function functionalLabelBoost(labelRaw = "") {
+  const label = String(labelRaw).toLowerCase();
+
+  let video = 0;
+  let audio = 0;
+  let text = 0;
+
+  // Visual-biased posterior cortex.
+  if (
+    label.includes("occipital") ||
+    label.includes("calcarine") ||
+    label.includes("cuneus") ||
+    label.includes("lingual") ||
+    label.includes("occipitotemporal") ||
+    label.includes("fusiform")
+  ) video += 0.75;
+
+  // Auditory-biased superior/transverse temporal cortex.
+  if (
+    label.includes("superior temporal") ||
+    label.includes("transverse temporal") ||
+    label.includes("heschl") ||
+    label.includes("temporal plane")
+  ) audio += 0.85;
+
+  // Language/text-biased left fronto-temporo-parietal regions.
+  if (
+    label.includes("inferior frontal") ||
+    label.includes("opercular") ||
+    label.includes("triangular") ||
+    label.includes("angular") ||
+    label.includes("supramarginal") ||
+    label.includes("middle temporal")
+  ) text += 0.65;
+
+  return { video, audio, text };
+}
+
+function applyIllustrativeMultimodalColors(meshes, bounds) {
+  const center = bounds.getCenter(new THREE.Vector3());
+  const size = bounds.getSize(new THREE.Vector3());
+  const half = new THREE.Vector3(
+    Math.max(size.x * 0.5, 1e-6),
+    Math.max(size.y * 0.5, 1e-6),
+    Math.max(size.z * 0.5, 1e-6)
+  );
+
+  const world = new THREE.Vector3();
+  const local = new THREE.Vector3();
+  const modal = new THREE.Color();
+
+  meshes.forEach(mesh => {
+    // Clone so each anatomical mesh can own its color attribute safely.
+    mesh.geometry = mesh.geometry.clone();
+    const geometry = mesh.geometry;
+    const pos = geometry.getAttribute("position");
+    if (!pos) return;
+
+    mesh.updateWorldMatrix(true, false);
+
+    const ex = extras(mesh);
+    const label = ex.bx_label || mesh.name || "";
+    const side = ex.bx_side || "";
+    const labelBoost = functionalLabelBoost(label);
+
+    const colors = new Float32Array(pos.count * 3);
+
+    for (let i = 0; i < pos.count; i++) {
+      local.fromBufferAttribute(pos, i);
+      world.copy(local).applyMatrix4(mesh.matrixWorld);
+
+      // Z-Anatomy model axes:
+      // +X = anatomical left, +Y = posterior, +Z = superior.
+      const x = (world.x - center.x) / half.x;
+      const y = (world.y - center.y) / half.y;
+      const z = (world.z - center.z) / half.z;
+
+      // Broad illustrative territories rather than hard parcels.
+      let video =
+        0.14 +
+        0.95 * gaussian(y, 0.72, 0.42) *
+        gaussian(z, 0.00, 0.88);
+
+      let audio =
+        0.13 +
+        0.95 * gaussian(Math.abs(x), 0.72, 0.30) *
+        gaussian(y, 0.04, 0.50) *
+        gaussian(z, -0.30, 0.42);
+
+      // +X is left in this model. Text is intentionally left-biased,
+      // with both frontal and temporo-parietal lobes represented.
+      const leftBias = 0.25 + 0.75 * sigmoid(4.5 * x);
+      let text =
+        0.12 +
+        leftBias * (
+          0.66 * gaussian(y, -0.52, 0.42) * gaussian(z, 0.03, 0.60) +
+          0.55 * gaussian(y,  0.10, 0.48) * gaussian(z, -0.12, 0.50)
+        );
+
+      // Anatomical label metadata gently reinforces the intended regions.
+      video += labelBoost.video;
+      audio += labelBoost.audio;
+      text  += labelBoost.text * (side === "left" ? 1.0 : 0.38);
+
+      const total = Math.max(video + audio + text, 1e-6);
+      const wv = video / total;
+      const wa = audio / total;
+      const wt = text  / total;
+
+      modal.setRGB(
+        MODAL_COLORS.video.r * wv + MODAL_COLORS.audio.r * wa + MODAL_COLORS.text.r * wt,
+        MODAL_COLORS.video.g * wv + MODAL_COLORS.audio.g * wa + MODAL_COLORS.text.g * wt,
+        MODAL_COLORS.video.b * wv + MODAL_COLORS.audio.b * wa + MODAL_COLORS.text.b * wt
+      );
+
+      // Preserve anatomical form with a quiet neutral base and pastel tint.
+      const dominance = Math.max(wv, wa, wt);
+      const tint = clamp01(0.50 + 0.40 * dominance);
+      modal.lerp(MODAL_COLORS.neutral, 1.0 - tint);
+
+      colors[i * 3 + 0] = modal.r;
+      colors[i * 3 + 1] = modal.g;
+      colors[i * 3 + 2] = modal.b;
+    }
+
+    geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+    mesh.material = cortexMaterial();
+  });
+}
+
+const draco = new DRACOLoader();
+draco.setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.7/");
+
+const loader = new GLTFLoader();
+loader.setDRACOLoader(draco);
+
+// Production deployment provides ./models/brain.glb.
+// The upstream fallback keeps the file inspectable before the local asset is fetched.
+const MODEL_URLS = [
+  "./models/brain.glb",
+  "https://itayinbarr.github.io/brainproject/models/brain.glb"
+];
+
+let cortexMeshes = [];
+let loadedModel = false;
+
+async function tryLoad(index = 0) {
+  if (index >= MODEL_URLS.length) {
+    loading.textContent = "BRAIN MODEL COULD NOT LOAD";
+    state.textContent = "ERROR";
+    return;
+  }
+
+  loader.load(
+    MODEL_URLS[index],
+    gltf => {
+      model.clear();
+      model.add(gltf.scene);
+      cortexMeshes = [];
+
+      gltf.scene.traverse(o => {
+        if (!o.isMesh) return;
+        const ex = extras(o);
+        const cat = ex.bx_cat || "other";
+        const side = ex.bx_side || "median";
+
+        // The GLB contains many anatomical systems. This design intentionally
+        // shows cortex only, keeping the page visually minimal.
+        o.visible = cat === "cortex";
+
+        if (o.visible) {
+          cortexMeshes.push(o);
+          o.castShadow = false;
+          o.receiveShadow = false;
+        }
+      });
+
+      if (!cortexMeshes.length) {
+        loading.textContent = "CORTEX METADATA NOT FOUND";
+        state.textContent = "ERROR";
+        return;
+      }
+
+      // Center on cortex and scale it exactly as a stage object.
+      const core = new THREE.Box3();
+      cortexMeshes.forEach(m => core.expandByObject(m));
+
+      // Apply the three-way Video / Audio / Text blend directly to cortical vertices.
+      applyIllustrativeMultimodalColors(cortexMeshes, core);
+
+      const center = core.getCenter(new THREE.Vector3());
+      gltf.scene.position.sub(center);
+
+      const radius = core.getBoundingSphere(new THREE.Sphere()).radius || 1;
+      model.scale.setScalar(1.72 / radius);
+
+      // Z-Anatomy exports anterior toward +Z; turn anterior toward camera.
+      model.rotation.y = Math.PI;
+
+      loading.hidden = true;
+      state.textContent = "V/A/T";
+      loadedModel = true;
+      resetView();
+    },
+    undefined,
+    err => {
+      console.warn("Brain load failed:", MODEL_URLS[index], err);
+      tryLoad(index + 1);
+    }
+  );
+}
+
+const target = new THREE.Vector3(0, -0.04, 0);
+const spherical = new THREE.Spherical(7.45, Math.PI / 2.22, 0.50);
+const goal = spherical.clone();
+
+let dragging = false;
+let lastX = 0;
+let lastY = 0;
+let autoRotate = true;
+
+function applyCamera() {
+  const offset = new THREE.Vector3().setFromSpherical(spherical);
+  camera.position.copy(target).add(offset);
+  camera.lookAt(target);
+}
+
+function resetView() {
+  goal.set(7.45, Math.PI / 2.22, 0.50);
+  spherical.copy(goal);
+  root.rotation.y = -0.25;
+  autoRotate = true;
+  spinButton.textContent = "PAUSE";
+  applyCamera();
+}
+
+stage.addEventListener("pointerdown", e => {
+  if (e.pointerType === "mouse" && e.button !== 0) return;
+  dragging = true;
+  lastX = e.clientX;
+  lastY = e.clientY;
+  autoRotate = false;
+  spinButton.textContent = "SPIN";
+  try { stage.setPointerCapture(e.pointerId); } catch (_) {}
+});
+
+stage.addEventListener("pointermove", e => {
+  if (!dragging) return;
+  const dx = e.clientX - lastX;
+  const dy = e.clientY - lastY;
+  lastX = e.clientX;
+  lastY = e.clientY;
+
+  goal.theta -= dx * 0.006;
+  goal.phi = Math.max(0.18, Math.min(Math.PI - 0.18, goal.phi - dy * 0.006));
+});
+
+function endDrag(e) {
+  dragging = false;
+  try { stage.releasePointerCapture(e.pointerId); } catch (_) {}
+}
+stage.addEventListener("pointerup", endDrag);
+stage.addEventListener("pointercancel", endDrag);
+
+stage.addEventListener("wheel", e => {
+  e.preventDefault();
+  autoRotate = false;
+  spinButton.textContent = "SPIN";
+  goal.radius = Math.max(3.0, Math.min(13, goal.radius * (1 + e.deltaY * 0.0009)));
+}, { passive:false });
+
+resetButton.addEventListener("click", resetView);
+spinButton.addEventListener("click", () => {
+  autoRotate = !autoRotate;
+  spinButton.textContent = autoRotate ? "PAUSE" : "SPIN";
+});
+
+function resize() {
+  const rect = stage.getBoundingClientRect();
+  const width = Math.max(1, Math.round(rect.width));
+  const height = Math.max(1, Math.round(rect.height));
+
+  renderer.setSize(width, height, false);
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+}
+
+function frame() {
+  requestAnimationFrame(frame);
+  resize();
+
+  if (autoRotate && loadedModel && !dragging) {
+    goal.theta += 0.0014;
+  }
+
+  spherical.radius += (goal.radius - spherical.radius) * 0.11;
+  spherical.phi += (goal.phi - spherical.phi) * 0.11;
+
+  let dTheta = goal.theta - spherical.theta;
+  while (dTheta > Math.PI) dTheta -= Math.PI * 2;
+  while (dTheta < -Math.PI) dTheta += Math.PI * 2;
+  spherical.theta += dTheta * 0.11;
+
+  applyCamera();
+  renderer.render(scene, camera);
+}
+
+window.addEventListener("resize", resize);
+resetView();
+tryLoad();
+frame();
+</script>
+
+</body>
+</html>
